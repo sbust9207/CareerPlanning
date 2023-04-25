@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BusinessApp.BusinessApp.Controls
+namespace CareerPlanning.controls
 {
 
 
-    public partial class Header1
+    public partial class header
     {
     }
 }

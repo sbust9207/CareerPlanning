@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BusinessApp.BusinessApp.Controls
+namespace CareerPlanning.controls
 {
 
 
-    public partial class Footer1
+    public partial class footer
     {
     }
 }

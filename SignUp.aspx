@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="SignUp.aspx.cs" Inherits="CareerPlanning.SignUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MyContentPlaceHolder" runat="server">
 
-     <body>
-    <form id="frmLogin" runat="server" class="form-signin">
+
         <div class="form-group pb-2">
             <table align="center" class="w-100">
                 <tr>
                     <td>&nbsp;</td>
-                    <td align="center"><b>CREATE AN ACCOUNT</b></td>
+                    <td align="center" size="16px"><b>CREATE AN ACCOUNT<br />
+                        </b></td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
@@ -21,21 +21,11 @@
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
                     <td align="center">
-                        <label for="inputENumber">Password:
+                        <label for="inputENumber">Password:&nbsp;
                         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                         </label>
                     </td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
@@ -63,10 +53,8 @@
                     <td>&nbsp;</td>
                 </tr>
             </table>
-            <p align ="center">Already have an account?<asp:HyperLink ID="hlSignIn" runat="server">Sign In</asp:HyperLink>
+            <p align ="center">Already have an account? <asp:HyperLink ID="hlSignIn" runat="server">Sign In</asp:HyperLink>
             </p>
         </div>
-    </form>
-</body>
 
 </asp:Content>

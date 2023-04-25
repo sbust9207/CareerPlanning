@@ -1,7 +1,7 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Footer.ascx.cs" Inherits="BusinessApp.BusinessApp.Controls.Footer1" %>
-
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="footer.ascx.cs" Inherits="CareerPlanning.controls.footer" %>
 
 <!-- Should be links -->
+<br />
 <p align="center">Privacy Policy</p>
 <p align="center">Consumer Information</p>
 <p align="center">Website Feedback</p>

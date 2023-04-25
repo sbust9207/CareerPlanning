@@ -15,13 +15,22 @@ namespace CareerPlanning
     {
 
         /// <summary>
-        /// formBusinessApp control.
+        /// form control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm formBusinessApp;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form;
+
+        /// <summary>
+        /// header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CareerPlanning.controls.header header;
 
         /// <summary>
         /// MyContentPlaceHolder control.
@@ -31,5 +40,14 @@ namespace CareerPlanning
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MyContentPlaceHolder;
+
+        /// <summary>
+        /// footer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CareerPlanning.controls.footer footer;
     }
 }

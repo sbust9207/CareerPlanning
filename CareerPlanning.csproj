@@ -67,8 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="controls\Footer.ascx" />
-    <Content Include="controls\Header.ascx" />
+    <Content Include="controls\footer.ascx" />
+    <Content Include="controls\header.ascx" />
     <Content Include="images\elmLogo.png" />
     <Content Include="LogOn.aspx" />
     <Content Include="scripts\Styles.css" />
@@ -76,19 +76,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controls\Footer.ascx.cs">
-      <DependentUpon>Footer.ascx</DependentUpon>
+    <Compile Include="controls\footer.ascx.cs">
+      <DependentUpon>footer.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="controls\Footer.ascx.designer.cs">
-      <DependentUpon>Footer.ascx</DependentUpon>
+    <Compile Include="controls\footer.ascx.designer.cs">
+      <DependentUpon>footer.ascx</DependentUpon>
     </Compile>
-    <Compile Include="controls\Header.ascx.cs">
-      <DependentUpon>Header.ascx</DependentUpon>
+    <Compile Include="controls\header.ascx.cs">
+      <DependentUpon>header.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="controls\Header.ascx.designer.cs">
-      <DependentUpon>Header.ascx</DependentUpon>
+    <Compile Include="controls\header.ascx.designer.cs">
+      <DependentUpon>header.ascx</DependentUpon>
     </Compile>
     <Compile Include="LogOn.aspx.cs">
       <DependentUpon>LogOn.aspx</DependentUpon>
