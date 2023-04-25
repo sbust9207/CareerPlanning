@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="controls\footer.ascx" />
     <Content Include="controls\header.ascx" />
+    <Content Include="freshman.aspx" />
     <Content Include="images\elmLogo.png" />
     <Content Include="LogOn.aspx" />
     <Content Include="scripts\Styles.css" />
@@ -89,6 +90,13 @@
     </Compile>
     <Compile Include="controls\header.ascx.designer.cs">
       <DependentUpon>header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="freshman.aspx.cs">
+      <DependentUpon>freshman.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="freshman.aspx.designer.cs">
+      <DependentUpon>freshman.aspx</DependentUpon>
     </Compile>
     <Compile Include="LogOn.aspx.cs">
       <DependentUpon>LogOn.aspx</DependentUpon>
