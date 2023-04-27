@@ -69,7 +69,10 @@
   <ItemGroup>
     <Content Include="controls\footer.ascx" />
     <Content Include="controls\header.ascx" />
-    <Content Include="freshman.aspx" />
+    <Content Include="GradeLevels\Fresh.aspx" />
+    <Content Include="GradeLevels\Jun.aspx" />
+    <Content Include="GradeLevels\sen.aspx" />
+    <Content Include="GradeLevels\Soph.aspx" />
     <Content Include="images\elmLogo.png" />
     <Content Include="LogOn.aspx" />
     <Content Include="scripts\Styles.css" />
@@ -91,12 +94,33 @@
     <Compile Include="controls\header.ascx.designer.cs">
       <DependentUpon>header.ascx</DependentUpon>
     </Compile>
-    <Compile Include="freshman.aspx.cs">
-      <DependentUpon>freshman.aspx</DependentUpon>
+    <Compile Include="GradeLevels\Fresh.aspx.cs">
+      <DependentUpon>Fresh.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="freshman.aspx.designer.cs">
-      <DependentUpon>freshman.aspx</DependentUpon>
+    <Compile Include="GradeLevels\Fresh.aspx.designer.cs">
+      <DependentUpon>Fresh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GradeLevels\Jun.aspx.cs">
+      <DependentUpon>Jun.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GradeLevels\Jun.aspx.designer.cs">
+      <DependentUpon>Jun.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GradeLevels\sen.aspx.cs">
+      <DependentUpon>sen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GradeLevels\sen.aspx.designer.cs">
+      <DependentUpon>sen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GradeLevels\Soph.aspx.cs">
+      <DependentUpon>Soph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GradeLevels\Soph.aspx.designer.cs">
+      <DependentUpon>Soph.aspx</DependentUpon>
     </Compile>
     <Compile Include="LogOn.aspx.cs">
       <DependentUpon>LogOn.aspx</DependentUpon>
