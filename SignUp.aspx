@@ -1,60 +1,43 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="SignUp.aspx.cs" Inherits="CareerPlanning.SignUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MyContentPlaceHolder" runat="server">
 
+    <h1 align="center"><b>CREATE AN ACCOUNT</b></h1>
 
-        <div class="form-group pb-2">
-            <table align="center" class="w-100">
+            <table align="center"> 
                 <tr>
-                    <td>&nbsp;</td>
-                    <td align="center" size="16px"><b>CREATE AN ACCOUNT<br />
-                        </b></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style="height: 35px"></td>
-                    <td align="center" style="height: 35px">
-                        <label for="inputENumber">E-Number:
+                    <td align="right">
+                        <label for="inputENumber">E-Number:&nbsp;</label>
+                    </td>
+                    <td>
                         <asp:TextBox ID="inputENumber" runat="server"></asp:TextBox>
-                        </label>
                     </td>
-                    <td style="height: 35px"></td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
-                    <td align="center">
-                        <label for="inputENumber">Password:&nbsp;
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                        </label>
+                    <td align="right">
+                        <label for="inputENumber">Password:&nbsp;</label>
                     </td>
-                    <td>&nbsp;</td>
+                    <td>
+                        <asp:TextBox ID="TextBox2" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+                    </td>
                 </tr>
                 <tr>
-                    <td style="height: 35px"></td>
-                    <td align="center" style="height: 35px">Enter Grade Level:
-                        <asp:DropDownList ID="DropDownList1" runat="server">
+                    <td align="right">Grade Level:&nbsp;
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="createGradeLevel" runat="server" OnSelectedIndexChanged="createGradeLevel_SelectedIndexChanged">
                             <asp:ListItem>Fr</asp:ListItem>
                             <asp:ListItem>So</asp:ListItem>
                             <asp:ListItem>Jr</asp:ListItem>
                             <asp:ListItem>Sn</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                    <td style="height: 35px"></td>
                 </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td align="center">
-                        <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-                    </td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
-            <p align ="center">Already have an account? <asp:HyperLink ID="hlSignIn" runat="server">Sign In</asp:HyperLink>
+                </table>
+            <br />
+            <p align ="center">
+                <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="submit" OnClick="btnSignUp_Changed">Sign Up</button>
+                <br />
+                Already have an account? <asp:HyperLink ID="hlSignIn" runat="server" NavigateUrl="http://careers.elmcsis.com/logon.aspx">Sign In</asp:HyperLink>
             </p>
-        </div>
 
 </asp:Content>

@@ -13,4 +13,12 @@ h2 {
     font-weight: bold;
 }
 
+.elm_blue_background {
+    background: #1D376C;
+    color: #FFFFFF;
+}
 
+.footer {
+    font-size: 12px;
+    color: grey;
+}

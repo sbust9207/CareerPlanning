@@ -1,6 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="header.ascx.cs" Inherits="CareerPlanning.controls.header" %>
 
-<br />
-<p align="center"><img src="../Images/elmLogo.png" style="height: 120px; width: 533px" /></p>
-<h1 align ="center">Elmhurst University Business Department</h1>
-<br />
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom elm_blue_background">
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto ms-2" href="https://www.elmhurst.edu/">
+        <img src="../images/elmLogoWhite.png" alt="Elmhurst University" width="300" height="100"/>
+
+    </a>
+</header>
