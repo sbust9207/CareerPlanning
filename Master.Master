@@ -19,10 +19,8 @@
         <uc1:header runat="server" id="header" />
         <div class="container">
             <div class="row">
-                <div class="col - 1">&nbsp</div>
-                <div class="col - 10"><asp:ContentPlaceHolder ID="MyContentPlaceHolder" runat="server">
+                <div class="col - 20"><asp:ContentPlaceHolder ID="MyContentPlaceHolder" runat="server">
             </asp:ContentPlaceHolder></div>
-                <div class="col - 1">&nbsp</div>
             </div>
         </div>
         <!-- footer ~ includes links and copyright -->
