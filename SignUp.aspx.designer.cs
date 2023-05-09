@@ -15,22 +15,40 @@ namespace CareerPlanning
     {
 
         /// <summary>
-        /// inputENumber control.
+        /// cAinputENumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputENumber;
+        protected global::System.Web.UI.WebControls.TextBox cAinputENumber;
 
         /// <summary>
-        /// TextBox2 control.
+        /// createENum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator createENum;
+
+        /// <summary>
+        /// cAPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox cAPassword;
+
+        /// <summary>
+        /// createPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator createPassword;
 
         /// <summary>
         /// createGradeLevel control.
@@ -40,6 +58,15 @@ namespace CareerPlanning
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList createGradeLevel;
+
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
         /// hlSignIn control.

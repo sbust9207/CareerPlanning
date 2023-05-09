@@ -24,13 +24,31 @@ namespace CareerPlanning
         protected global::System.Web.UI.WebControls.TextBox inputENumber;
 
         /// <summary>
-        /// TextBox2 control.
+        /// logInENum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator logInENum;
+
+        /// <summary>
+        /// signInPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox signInPass;
+
+        /// <summary>
+        /// logInPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator logInPass;
 
         /// <summary>
         /// DropDownList2 control.

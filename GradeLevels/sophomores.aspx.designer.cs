@@ -11,43 +11,43 @@ namespace CareerPlanning.GradeLevels
 {
 
 
-    public partial class Fresh
+    public partial class sophomore
     {
 
         /// <summary>
-        /// cbFr1 control.
+        /// cbSo1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbFr1;
+        protected global::System.Web.UI.WebControls.CheckBox cbSo1;
 
         /// <summary>
-        /// cbFr2 control.
+        /// cbSo2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbFr2;
+        protected global::System.Web.UI.WebControls.CheckBox cbSo2;
 
         /// <summary>
-        /// cbFr3 control.
+        /// cbSo3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbFr3;
+        protected global::System.Web.UI.WebControls.CheckBox cbSo3;
 
         /// <summary>
-        /// cdFr4 control.
+        /// cbSo04 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cdFr4;
+        protected global::System.Web.UI.WebControls.CheckBox cbSo04;
     }
 }

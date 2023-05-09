@@ -6,6 +6,7 @@
         
             <table align="center">
                 <tr>
+                    <td width="135px"></td>
                     <td align="right">
                         <label for="inputENumber">E-Number:&nbsp;</label>
                     </td>
@@ -14,13 +15,20 @@
                         <asp:TextBox ID="inputENumber" runat="server"></asp:TextBox>
                         </label>
                     </td>
+                    <td>
+                        &nbsp;<asp:RequiredFieldValidator ID="logInENum" runat="server" ControlToValidate="inputENumber" CssClass="error" Display="Dynamic" ErrorMessage="e-number is required"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr>
+                    <td>&nbsp;</td>
                     <td align="right">
                         <label for="inputENumber">Password:&nbsp;</label>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="signInPass" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:RequiredFieldValidator ID="logInPass" runat="server" ControlToValidate="signInPass" CssClass="error" Display="Dynamic" ErrorMessage="password is required"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
             </table>

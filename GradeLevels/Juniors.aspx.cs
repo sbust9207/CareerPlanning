@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace CareerPlanning.GradeLevels
 {
-    public partial class Soph : System.Web.UI.Page
+    public partial class Junior : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

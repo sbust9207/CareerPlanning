@@ -11,43 +11,43 @@ namespace CareerPlanning.GradeLevels
 {
 
 
-    public partial class Jun
+    public partial class Seniors
     {
 
         /// <summary>
-        /// cbJn1 control.
+        /// cbSn1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbJn1;
+        protected global::System.Web.UI.WebControls.CheckBox cbSn1;
 
         /// <summary>
-        /// cbJn2 control.
+        /// cbSn2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbJn2;
+        protected global::System.Web.UI.WebControls.CheckBox cbSn2;
 
         /// <summary>
-        /// cbJn3 control.
+        /// cbSn3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbJn3;
+        protected global::System.Web.UI.WebControls.CheckBox cbSn3;
 
         /// <summary>
-        /// cbJn4 control.
+        /// cbSn4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbJn4;
+        protected global::System.Web.UI.WebControls.CheckBox cbSn4;
     }
 }

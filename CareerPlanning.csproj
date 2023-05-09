@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="controls\footer.ascx" />
     <Content Include="controls\header.ascx" />
+    <Content Include="ERROR.aspx" />
     <Content Include="GradeLevels\Freshmen.aspx" />
     <Content Include="GradeLevels\Juniors.aspx" />
     <Content Include="GradeLevels\Seniors.aspx" />
@@ -104,6 +105,7 @@
     <Content Include="images\handshakelogo.jpg" />
     <Content Include="images\linkedin.jpg" />
     <Content Include="images\Navigate.jpg" />
+    <Content Include="itWorked.aspx" />
     <Content Include="LogOn.aspx" />
     <Content Include="scripts\Styles.css" />
     <Content Include="SignUp.aspx" />
@@ -123,6 +125,13 @@
     </Compile>
     <Compile Include="controls\header.ascx.designer.cs">
       <DependentUpon>header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ERROR.aspx.cs">
+      <DependentUpon>ERROR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ERROR.aspx.designer.cs">
+      <DependentUpon>ERROR.aspx</DependentUpon>
     </Compile>
     <Compile Include="GradeLevels\Freshmen.aspx.cs">
       <DependentUpon>Freshmen.aspx</DependentUpon>
@@ -152,6 +161,13 @@
     <Compile Include="GradeLevels\sophomores.aspx.designer.cs">
       <DependentUpon>sophomores.aspx</DependentUpon>
     </Compile>
+    <Compile Include="itWorked.aspx.cs">
+      <DependentUpon>itWorked.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="itWorked.aspx.designer.cs">
+      <DependentUpon>itWorked.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LogOn.aspx.cs">
       <DependentUpon>LogOn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -179,6 +195,8 @@
     <Content Include="Master.Master" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FTPProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FTPProfile2.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -186,7 +204,17 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{B691E011-1797-432E-907A-4D8C69339129}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
