@@ -1,0 +1,29 @@
+﻿body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.elm_blue_background {
+    background: #1D376C;
+    color: #FFFFFF;
+}
+
+.footer {
+    font-size: 12px;
+    color: grey;
+}
+
+.error {
+    color: red;
+}
+
