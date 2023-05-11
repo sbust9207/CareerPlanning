@@ -60,13 +60,22 @@ namespace CareerPlanning
         protected global::System.Web.UI.WebControls.DropDownList createGradeLevel;
 
         /// <summary>
-        /// Button1 control.
+        /// valGradeLevel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Label valGradeLevel;
+
+        /// <summary>
+        /// btnCreateAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCreateAccount;
 
         /// <summary>
         /// hlSignIn control.

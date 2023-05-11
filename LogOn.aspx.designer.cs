@@ -42,22 +42,31 @@ namespace CareerPlanning
         protected global::System.Web.UI.WebControls.TextBox signInPass;
 
         /// <summary>
-        /// logInPass control.
+        /// reqlogInPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator logInPass;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqlogInPass;
 
         /// <summary>
-        /// DropDownList2 control.
+        /// lbInvalidLogIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.Label lbInvalidLogIn;
+
+        /// <summary>
+        /// btnSignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSignIn;
 
         /// <summary>
         /// hlCreateOne control.

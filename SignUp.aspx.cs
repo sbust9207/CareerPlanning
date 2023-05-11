@@ -14,6 +14,7 @@ namespace CareerPlanning
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            valGradeLevel.Visible = false;
         }
 
         private bool AddAccount()
@@ -21,10 +22,10 @@ namespace CareerPlanning
             try
             {
                 string strConnection = "Data source=sql.elmcsis.com;Initial catalog=CAREER_READINESS_DB;User ID=careers;Password=kpg7J2R9wHjR!;";
-                
+
                 SqlConnection connection = new SqlConnection(strConnection);
                 connection.Open();
-                
+
                 string SQL = "INSERT INTO dbo.Students (StudentGUID, eNumber, Password, CurrentGradeLevel, DateCreated) VALUES (@StudentGUID, @eNumber, @Password, @CurrentGradeLevel, @DateCreated)";
                 SqlCommand command = new SqlCommand(SQL, connection);
 
@@ -36,6 +37,7 @@ namespace CareerPlanning
 
                 command.ExecuteNonQuery();
 
+                command.Dispose();
                 connection.Close();
                 return true;
             }
@@ -45,21 +47,39 @@ namespace CareerPlanning
             }
         }
 
-        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
-
-        }
-
-        protected void createGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
+            if (createGradeLevel.SelectedIndex == 0)
+            {
+                valGradeLevel.Visible = true;
+                SetFocus(createGradeLevel);
+                return;
+            }
             if (AddAccount() == true)
             {
-                Response.Redirect("itWorked.aspx");
+                Session["username"] = cAinputENumber.Text;
+                Session["isLoggedIn"] = true;
+
+                if (createGradeLevel.SelectedValue == "Fr")
+                {
+                    Response.Redirect("gradelevels/freshmen.aspx");
+                }
+                else if (createGradeLevel.SelectedValue == "So")
+                {
+                    Response.Redirect("gradelevels/sophomores.aspx");
+                }
+                else if (createGradeLevel.SelectedValue == "Jr")
+                {
+                    Response.Redirect("gradelevels/Juniors.aspx");
+                }
+                else if (createGradeLevel.SelectedValue == "Sn")
+                {
+                    Response.Redirect("gradelevels/Seniors.aspx");
+                }
+                else
+                {
+                    Response.Redirect("itWorkeds.aspx");
+                }
             }
             else
             {
