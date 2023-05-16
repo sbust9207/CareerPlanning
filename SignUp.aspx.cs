@@ -49,41 +49,43 @@ namespace CareerPlanning
 
         protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
-            if (createGradeLevel.SelectedIndex == 0)
+            if (IsValid)
             {
-                valGradeLevel.Visible = true;
-                SetFocus(createGradeLevel);
-                return;
-            }
-            if (AddAccount() == true)
-            {
-                Session["username"] = cAinputENumber.Text;
-                Session["isLoggedIn"] = true;
+                if (createGradeLevel.SelectedIndex == 0)
+                {
+                    valGradeLevel.Visible = true;
+                    SetFocus(createGradeLevel);
+                    return;
+                }
+                if (AddAccount() == true)
+                {
+                    Session["username"] = cAinputENumber.Text;
 
-                if (createGradeLevel.SelectedValue == "Fr")
-                {
-                    Response.Redirect("gradelevels/freshmen.aspx");
-                }
-                else if (createGradeLevel.SelectedValue == "So")
-                {
-                    Response.Redirect("gradelevels/sophomores.aspx");
-                }
-                else if (createGradeLevel.SelectedValue == "Jr")
-                {
-                    Response.Redirect("gradelevels/Juniors.aspx");
-                }
-                else if (createGradeLevel.SelectedValue == "Sn")
-                {
-                    Response.Redirect("gradelevels/Seniors.aspx");
+                    if (createGradeLevel.SelectedValue == "Fr")
+                    {
+                        Response.Redirect("gradelevels/freshmen.aspx");
+                    }
+                    else if (createGradeLevel.SelectedValue == "So")
+                    {
+                        Response.Redirect("gradelevels/sophomores.aspx");
+                    }
+                    else if (createGradeLevel.SelectedValue == "Jr")
+                    {
+                        Response.Redirect("gradelevels/Juniors.aspx");
+                    }
+                    else if (createGradeLevel.SelectedValue == "Sn")
+                    {
+                        Response.Redirect("gradelevels/Seniors.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("itWorkeds.aspx");
+                    }
                 }
                 else
                 {
-                    Response.Redirect("itWorkeds.aspx");
+                    Response.Redirect("ERROR.aspx");
                 }
-            }
-            else
-            {
-                Response.Redirect("ERROR.aspx");
             }
         }
     }

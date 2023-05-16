@@ -3,10 +3,9 @@
 
     <h1 align="center"><b>PLEASE SIGN IN</b></h1>
 
-        
-            <table align="center">
+    <table align="center">
                 <tr>
-                    <td width="135px"></td>
+                    <td width="150px"></td>
                     <td align="right">
                         <label for="inputENumber">E-Number:&nbsp;</label>
                     </td>
@@ -15,8 +14,9 @@
                         <asp:TextBox ID="inputENumber" runat="server"></asp:TextBox>
                         </label>
                     </td>
-                    <td width="135px">
+                    <td width="150px">
                         &nbsp;<asp:RequiredFieldValidator ID="logInENum" runat="server" ControlToValidate="inputENumber" CssClass="error" Display="Dynamic" ErrorMessage="e-number is required"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="LogIneNumRegX" runat="server" ErrorMessage="Incorrect Format" CssClass="error" ControlToValidate="inputENumber" ValidationExpression="^(e\d{7})$" Display="Dynamic"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
@@ -35,10 +35,9 @@
 
 
             <p align ="center">
-                <br />
                 <asp:Label ID="lbInvalidLogIn" runat="server" Text="Invalid eNumber or password" CssClass="error"></asp:Label>
                 <br />
-                <asp:Button ID="btnSignIn" runat="server" CssClass="btn btn-lg btn-primary btn-block" OnClick="btnSignIn_Click" Text="Sign in" />
+                <asp:Button ID="btnSignIn" runat="server" CssClass="btn btn-lg btn-primary btn-block" OnClick="btnSignIn_Click" Text="Sign in" BackColor="#1D376C" BorderColor="#1D376C" />
                 <br />
                 
                 <br />

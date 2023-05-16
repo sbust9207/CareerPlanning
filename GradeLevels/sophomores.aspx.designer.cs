@@ -15,6 +15,15 @@ namespace CareerPlanning.GradeLevels
     {
 
         /// <summary>
+        /// lstAchievements control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lstAchievements;
+
+        /// <summary>
         /// cbSo1 control.
         /// </summary>
         /// <remarks>
@@ -42,13 +51,13 @@ namespace CareerPlanning.GradeLevels
         protected global::System.Web.UI.WebControls.CheckBox cbSo3;
 
         /// <summary>
-        /// cbSo04 control.
+        /// cbSo4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbSo04;
+        protected global::System.Web.UI.WebControls.CheckBox cbSo4;
 
         /// <summary>
         /// ddGradeLevel2 control.

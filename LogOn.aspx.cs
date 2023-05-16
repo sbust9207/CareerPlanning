@@ -35,16 +35,20 @@ namespace CareerPlanning
                 if (reader.Read())
                 {
                     string gradeLevel = reader.GetString(0);
+                    reader.Close();
+                    command.Dispose();
+                    connection.Close();
                     return gradeLevel;
                 }
                 else
                 {
+                    reader.Close();
+                    command.Dispose();
+                    connection.Close();
                     return "Error";
                 }
 
-                reader.Close();
-                command.Dispose();
-                connection.Close();
+
             }
             catch
             {
@@ -55,43 +59,40 @@ namespace CareerPlanning
 
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
-            string gradeLevel = AttemptLogIn();
-            if (gradeLevel != "Error")
+            if (IsValid)
             {
-                this.Session["username"] = inputENumber.Text;
-                this.Session["isLoggedIn"] = true;
+                string gradeLevel = AttemptLogIn();
+                if (gradeLevel != "Error")
+                {
+                    this.Session["username"] = inputENumber.Text;
 
-                if (gradeLevel == "Fr")
-                {
-                    Response.Redirect("gradelevels/freshmen.aspx");
-                }
-                else if (gradeLevel == "So")
-                {
-                    Response.Redirect("gradelevels/sophomores.aspx");
-                }
-                else if (gradeLevel == "Jr")
-                {
-                    Response.Redirect("gradelevels/Juniors.aspx");
-                }
-                else if (gradeLevel == "Sn")
-                {
-                    Response.Redirect("gradelevels/Seniors.aspx");
+                    if (gradeLevel == "Fr")
+                    {
+                        Response.Redirect("gradelevels/freshmen.aspx");
+                    }
+                    else if (gradeLevel == "So")
+                    {
+                        Response.Redirect("gradelevels/sophomores.aspx");
+                    }
+                    else if (gradeLevel == "Jr")
+                    {
+                        Response.Redirect("gradelevels/Juniors.aspx");
+                    }
+                    else if (gradeLevel == "Sn")
+                    {
+                        Response.Redirect("gradelevels/Seniors.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("ERROR.aspx");
+                    }
                 }
                 else
                 {
-                    Response.Redirect("ERROR.aspx");
+                    lbInvalidLogIn.Visible = true;
+                    SetFocus(inputENumber);
                 }
             }
-            else
-            {
-                lbInvalidLogIn.Visible = true;
-                SetFocus(inputENumber);
-            }
-
-        }
-
-        protected void ddGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
     }
