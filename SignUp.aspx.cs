@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
-
+using System.Configuration;
 
 namespace CareerPlanning
 {
@@ -21,7 +21,8 @@ namespace CareerPlanning
         {
             try
             {
-                string strConnection = "Data source=sql.elmcsis.com;Initial catalog=CAREER_READINESS_DB;User ID=careers;Password=kpg7J2R9wHjR!;";
+                //Connects to the database to add student information into a new record
+                string strConnection = ConfigurationManager.AppSettings["ConnectionString"];
 
                 SqlConnection connection = new SqlConnection(strConnection);
                 connection.Open();
@@ -49,18 +50,24 @@ namespace CareerPlanning
 
         protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
+            //Checks if all input fields are validated 
             if (IsValid)
             {
+                // validates that drop down list has a selection
                 if (createGradeLevel.SelectedIndex == 0)
                 {
+                    // if no selection is made, an error label is made visible and the page focuses on the drop down list
                     valGradeLevel.Visible = true;
                     SetFocus(createGradeLevel);
                     return;
                 }
+                // if all fields are valid
                 if (AddAccount() == true)
                 {
+                    // session variable to store eNumber across different pages
                     Session["username"] = cAinputENumber.Text;
 
+                    // redirects to the student dashboard according to the grade selected 
                     if (createGradeLevel.SelectedValue == "Fr")
                     {
                         Response.Redirect("gradelevels/freshmen.aspx");
@@ -77,14 +84,11 @@ namespace CareerPlanning
                     {
                         Response.Redirect("gradelevels/Seniors.aspx");
                     }
-                    else
-                    {
-                        Response.Redirect("itWorkeds.aspx");
-                    }
                 }
                 else
                 {
-                    Response.Redirect("ERROR.aspx");
+                    // error collection
+                    Response.Redirect("SignUp.aspx");
                 }
             }
         }

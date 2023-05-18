@@ -109,6 +109,7 @@
     <Content Include="LogOn.aspx" />
     <Content Include="scripts\Styles.css" />
     <Content Include="SignUp.aspx" />
+    <Content Include="UploadAchievement.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +190,13 @@
     </Compile>
     <Compile Include="SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadAchievement.aspx.cs">
+      <DependentUpon>UploadAchievement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadAchievement.aspx.designer.cs">
+      <DependentUpon>UploadAchievement.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

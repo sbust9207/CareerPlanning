@@ -3,7 +3,8 @@
 
     <h1 align="center"><b>PLEASE SIGN IN</b></h1>
 
-    <table align="center">
+        
+            <table align="center">
                 <tr>
                     <td width="150px"></td>
                     <td align="right">
@@ -15,6 +16,7 @@
                         </label>
                     </td>
                     <td width="150px">
+                        <!-- Requires that the ENumber field is filled out and follows the format of an ENumber -->
                         &nbsp;<asp:RequiredFieldValidator ID="logInENum" runat="server" ControlToValidate="inputENumber" CssClass="error" Display="Dynamic" ErrorMessage="e-number is required"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="LogIneNumRegX" runat="server" ErrorMessage="Incorrect Format" CssClass="error" ControlToValidate="inputENumber" ValidationExpression="^(e\d{7})$" Display="Dynamic"></asp:RegularExpressionValidator>
                     </td>
@@ -28,6 +30,7 @@
                         <asp:TextBox ID="signInPass" runat="server" TextMode="Password"></asp:TextBox>
                     </td>
                     <td>
+                        <!-- Requires that the password field is filled -->
                         <asp:RequiredFieldValidator ID="reqlogInPass" runat="server" ControlToValidate="signInPass" CssClass="error" Display="Dynamic" ErrorMessage="password is required"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
@@ -41,6 +44,7 @@
                 <br />
                 
                 <br />
+                <!-- redirects to Sign up for students who do not have an account -->
                 Don't have an account? <asp:HyperLink ID="hlCreateOne" runat="server" NavigateUrl="http://careers.elmcsis.com/signup.aspx">Create One</asp:HyperLink>
             </p>
     

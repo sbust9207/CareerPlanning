@@ -16,30 +16,51 @@ namespace CareerPlanning.GradeLevels
         {
             if (!IsPostBack)
             {
+                // ensures session is not expired 
                 if (Session["username"] != null)
                 {
                     populateCheckBoxes();
                     PopulateAchievements((string)Session["username"]);
                 }
+                else
+                {
+                    Response.Redirect("/LogOn.aspx");
+                }
             }
         }
 
+        protected string getENum()
+        {
+            if (Session["username"] != null)
+            {
+                // ensures session is not expired before retrieving ENumber 
+                string studentENumber = (string)Session["username"];
+                return studentENumber;
+            }
+            else
+            {
+                Response.Redirect("/LogOn.aspx");
+            }
+            return "Error";
+        }
         protected void populateCheckBoxes()
         {
 
-            string strConnection = "Data source=sql.elmcsis.com;Initial catalog=CAREER_READINESS_DB;User ID=careers;Password=kpg7J2R9wHjR!;";
+            string strConnection = ConfigurationManager.AppSettings["ConnectionString"];
             SqlConnection connection = new SqlConnection(strConnection);
             connection.Open();
 
+            // retrieves check box fields from database
             string SQL = "SELECT MockInfoInterview, ClientBusiProj, JobSearchGoals, NetworkingStrat FROM dbo.Students WHERE CAST(eNumber as VARCHAR) = @eNumber";
             SqlCommand command = new SqlCommand(SQL, connection);
-            string eNumber = (string)Session["username"];
+            string eNumber = getENum();
             command.Parameters.AddWithValue("@eNumber", eNumber);
 
             SqlDataReader reader = command.ExecuteReader();
 
             if (reader.Read())
             {
+                // checks checkboxes if they were previously checked by student 
                 bool MockInfoInterview = reader.GetBoolean(0);
                 bool ClientBusiProj = reader.GetBoolean(1);
                 bool JobSearchGoals = reader.GetBoolean(2);
@@ -69,17 +90,18 @@ namespace CareerPlanning.GradeLevels
 
         }
 
+        // updates database if student checks check box 
         protected void updateTaskCompleted(string task)
         {
             if (Session["username"] != null)
             {
-                string strConnection = "Data source=sql.elmcsis.com;Initial catalog=CAREER_READINESS_DB;User ID=careers;Password=kpg7J2R9wHjR!;";
+                string strConnection = ConfigurationManager.AppSettings["ConnectionString"];
                 SqlConnection connection = new SqlConnection(strConnection);
                 connection.Open();
 
                 string SQL = "UPDATE dbo.Students SET " + task + "= @selected WHERE CAST(eNumber as VARCHAR) = @eNumber";
                 SqlCommand command = new SqlCommand(SQL, connection);
-                string eNumber = (string)Session["username"];
+                string eNumber = getENum();
                 command.Parameters.AddWithValue("@selected", true);
                 command.Parameters.AddWithValue("@eNumber", eNumber);
 
@@ -94,17 +116,18 @@ namespace CareerPlanning.GradeLevels
             }
         }
 
+        // updates database if student uncheck check box 
         protected void updateTaskNotCompleted(string task)
         {
             if (Session["username"] != null)
             {
-                string strConnection = "Data source=sql.elmcsis.com;Initial catalog=CAREER_READINESS_DB;User ID=careers;Password=kpg7J2R9wHjR!;";
+                string strConnection = ConfigurationManager.AppSettings["ConnectionString"];
                 SqlConnection connection = new SqlConnection(strConnection);
                 connection.Open();
 
                 string SQL = "UPDATE dbo.Students SET " + task + "= @selected WHERE CAST(eNumber as VARCHAR) = @eNumber";
                 SqlCommand command = new SqlCommand(SQL, connection);
-                string eNumber = (string)Session["username"];
+                string eNumber = getENum();
                 command.Parameters.AddWithValue("@selected", false);
                 command.Parameters.AddWithValue("@eNumber", eNumber);
 
@@ -121,23 +144,25 @@ namespace CareerPlanning.GradeLevels
 
         protected void ddGradeLevel3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // ensures selected grade level is valid 
             if (ddGradeLevel3.SelectedIndex != 0)
             {
                 if (Session["username"] != null)
                 {
-                    string strConnection = "Data source=sql.elmcsis.com;Initial catalog=CAREER_READINESS_DB;User ID=careers;Password=kpg7J2R9wHjR!;";
+                    string strConnection = ConfigurationManager.AppSettings["ConnectionString"];
                     SqlConnection connection = new SqlConnection(strConnection);
                     connection.Open();
 
                     string SQL = "UPDATE dbo.Students SET CurrentGradeLevel = @selected WHERE CAST(eNumber as VARCHAR) = @eNumber";
                     SqlCommand command = new SqlCommand(SQL, connection);
-                    string eNumber = (string)Session["username"];
+                    string eNumber = getENum();
                     command.Parameters.AddWithValue("@selected", ddGradeLevel3.SelectedValue.ToString());
                     command.Parameters.AddWithValue("@eNumber", eNumber);
 
                     command.ExecuteNonQuery();
 
 
+                    // redirects to new grade level dashboard
                     string gradeLevel = ddGradeLevel3.SelectedValue.ToString();
                     if (gradeLevel == "Fr")
                     {
@@ -170,49 +195,96 @@ namespace CareerPlanning.GradeLevels
 
         protected void cbJn1_CheckedChanged(object sender, EventArgs e)
         {
+            string studentENumber = getENum();
             if (cbJn1.Checked)
             {
                 updateTaskCompleted("MockInfoInterview");
+                // used for back-end record keeping 
+                AddUpdateTaskComplete("MockInfoInterview", studentENumber);
+                // awards points based on task completed toward achievements
+                ChangeSkillLevel("SelfDevelopment", studentENumber, (GetCurrentSkillLevel("SelfDevelopment", studentENumber) + 1));
+                ChangeSkillLevel("Communication", studentENumber, (GetCurrentSkillLevel("Communication", studentENumber) + 1));
+
             }
             else
             {
                 updateTaskNotCompleted("MockInfoInterview");
+                // removes points based on task completed toward achievements
+                ChangeSkillLevel("SelfDevelopment", studentENumber, (GetCurrentSkillLevel("SelfDevelopment", studentENumber) - 1));
+                ChangeSkillLevel("Communication", studentENumber, (GetCurrentSkillLevel("Communication", studentENumber) - 1));
             }
         }
 
         protected void cbJn2_CheckedChanged(object sender, EventArgs e)
         {
+            string studentENumber = getENum();
             if (cbJn2.Checked)
             {
                 updateTaskCompleted("ClientBusiProj");
+                // used for back-end record keeping 
+                AddUpdateTaskComplete("ClientBusiProj", studentENumber);
+                // awards points based on task completed toward achievements
+                ChangeSkillLevel("SelfDevelopment", studentENumber, (GetCurrentSkillLevel("SelfDevelopment", studentENumber) + 1));
+                ChangeSkillLevel("CriticalThinking", studentENumber, (GetCurrentSkillLevel("CriticalThinking", studentENumber) + 1));
+                ChangeSkillLevel("Teamwork", studentENumber, (GetCurrentSkillLevel("Teamwork", studentENumber) + 2));
+                ChangeSkillLevel("EqualityAndInclusion", studentENumber, (GetCurrentSkillLevel("EqualityAndInclusion", studentENumber) + 2));
             }
             else
             {
                 updateTaskNotCompleted("ClientBusiProj");
+                // removes points based on task completed toward achievements
+                ChangeSkillLevel("SelfDevelopment", studentENumber, (GetCurrentSkillLevel("SelfDevelopment", studentENumber) - 1));
+                ChangeSkillLevel("CriticalThinking", studentENumber, (GetCurrentSkillLevel("CriticalThinking", studentENumber) - 1));
+                ChangeSkillLevel("Teamwork", studentENumber, (GetCurrentSkillLevel("Teamwork", studentENumber) - 2));
+                ChangeSkillLevel("EqualityAndInclusion", studentENumber, (GetCurrentSkillLevel("EqualityAndInclusion", studentENumber) - 2));
             }
         }
 
         protected void cbJn3_CheckedChanged(object sender, EventArgs e)
         {
+            string studentENumber = getENum();
             if (cbJn3.Checked)
             {
                 updateTaskCompleted("JobSearchGoals");
+                // used for back-end record keeping 
+                AddUpdateTaskComplete("JobSearchGoals", studentENumber);
+                // awards points based on task completed toward achievements
+                ChangeSkillLevel("SelfDevelopment", studentENumber, (GetCurrentSkillLevel("SelfDevelopment", studentENumber) + 1));
             }
             else
             {
                 updateTaskNotCompleted("JobSearchGoals");
+                // removes points based on task completed toward achievements
+                ChangeSkillLevel("SelfDevelopment", studentENumber, (GetCurrentSkillLevel("SelfDevelopment", studentENumber) - 1));
             }
         }
 
         protected void cbJn4_CheckedChanged(object sender, EventArgs e)
         {
+            string studentENumber = getENum();
             if (cbJn4.Checked)
             {
                 updateTaskCompleted("NetworkingStrat");
+                // used for back-end record keeping 
+                AddUpdateTaskComplete("NetworkingStrat", studentENumber);
+                // awards points based on task completed toward achievements
+                ChangeSkillLevel("SelfDevelopment", studentENumber, (GetCurrentSkillLevel("SelfDevelopment", studentENumber) + 1));
+                ChangeSkillLevel("Communication", studentENumber, (GetCurrentSkillLevel("Communication", studentENumber) + 1));
+                ChangeSkillLevel("CriticalThinking", studentENumber, (GetCurrentSkillLevel("CriticalThinking", studentENumber) + 1));
+                ChangeSkillLevel("EqualityAndInclusion", studentENumber, (GetCurrentSkillLevel("EqualityAndInclusion", studentENumber) + 2));
+                ChangeSkillLevel("Leadership", studentENumber, (GetCurrentSkillLevel("Leadership", studentENumber) + 1));
+                ChangeSkillLevel("Technology", studentENumber, (GetCurrentSkillLevel("Technology", studentENumber) + 2));
             }
             else
             {
                 updateTaskNotCompleted("NetworkingStrat");
+                // removes points based on task completed toward achievements
+                ChangeSkillLevel("SelfDevelopment", studentENumber, (GetCurrentSkillLevel("SelfDevelopment", studentENumber) - 1));
+                ChangeSkillLevel("Communication", studentENumber, (GetCurrentSkillLevel("Communication", studentENumber) - 1));
+                ChangeSkillLevel("CriticalThinking", studentENumber, (GetCurrentSkillLevel("CriticalThinking", studentENumber) - 1));
+                ChangeSkillLevel("EqualityAndInclusion", studentENumber, (GetCurrentSkillLevel("EqualityAndInclusion", studentENumber) - 2));
+                ChangeSkillLevel("Leadership", studentENumber, (GetCurrentSkillLevel("Leadership", studentENumber) - 1));
+                ChangeSkillLevel("Technology", studentENumber, (GetCurrentSkillLevel("Technology", studentENumber) - 2));
             }
         }
 
@@ -231,6 +303,218 @@ namespace CareerPlanning.GradeLevels
                     lstAchievements.DataBind();
                 }
             }
+        }
+
+        //used for back-end record keeping, records each acheivement earned by each student 
+        protected bool AddUpdateAchievement(string achieveID, string stdntENumber)
+        {
+            try
+            {
+                string strConnection = ConfigurationManager.AppSettings["ConnectionString"];
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    connection.Open();
+
+                    string SQL = "SELECT COUNT(*) FROM StudentAchievementsObtained WHERE eNumber = @eNumber AND AchievementID = @AchievementID";
+
+                    using (SqlCommand command = new SqlCommand(SQL, connection))
+                    {
+                        command.Parameters.AddWithValue("eNumber", stdntENumber);
+                        command.Parameters.AddWithValue("AchievementID", achieveID);
+
+                        int count = (int)command.ExecuteScalar();
+
+                        if (count > 0)
+                        {
+                            // record already present, updates time completed 
+                            SQL = "UPDATE StudentAchievementsCompleted SET CompletedOnDate = @CompletedOnDate WHERE eNumber = @eNumber AND AchievementID = @AchievementID";
+                        }
+                        else
+                        {
+                            // new record added 
+                            SQL = "INSERT INTO StudentAchievementsObtained (eNumber, AchievementID, CompletedOnDate) VALUES (@eNumber, @AchievementID, @CompletedOnDate)";
+                        }
+
+                        using (SqlCommand updateCommand = new SqlCommand(SQL, connection))
+                        {
+                            updateCommand.Parameters.AddWithValue("@eNumber", stdntENumber);
+                            updateCommand.Parameters.AddWithValue("@AchievementID", achieveID);
+                            updateCommand.Parameters.AddWithValue("@CompletedOnDate", DateTime.Now);
+
+                            updateCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //used for back-end record keeping 
+        protected bool AddUpdateTaskComplete(string taskID, string stdntENumber)
+        {
+            try
+            {
+                string strConnection = ConfigurationManager.AppSettings["ConnectionString"];
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    connection.Open();
+
+                    string SQL = "SELECT COUNT(*) FROM StudentTasksCompleted WHERE eNumber = @eNumber AND TaskID = @TaskID";
+
+                    using (SqlCommand command = new SqlCommand(SQL, connection))
+                    {
+                        command.Parameters.AddWithValue("eNumber", stdntENumber);
+                        command.Parameters.AddWithValue("TaskID", taskID);
+
+                        int count = (int)command.ExecuteScalar();
+
+                        if (count > 0)
+                        {
+                            // record already present, updates time completed 
+                            SQL = "UPDATE StudentTasksCompleted SET CompletedOnDate = @CompletedOnDate WHERE eNumber = @eNumber AND TaskID = @TaskID";
+                        }
+                        else
+                        {
+                            // new record added 
+                            SQL = "INSERT INTO StudentTasksCompleted (eNumber, TaskID, CompletedOnDate) VALUES (@eNumber, @TaskID, @CompletedOnDate)";
+                        }
+
+                        using (SqlCommand updateCommand = new SqlCommand(SQL, connection))
+                        {
+                            updateCommand.Parameters.AddWithValue("@eNumber", stdntENumber);
+                            updateCommand.Parameters.AddWithValue("@TaskID", taskID);
+                            updateCommand.Parameters.AddWithValue("@CompletedOnDate", DateTime.Now);
+
+                            updateCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // returns the points currently awarded toward an achievement 
+        protected int GetCurrentSkillLevel(string skillID, string stdntENumber)
+        {
+            string strConnection = ConfigurationManager.AppSettings["ConnectionString"];
+            string currLevelString = "";
+            int currLevel = 0;
+            // linkedInCreated can only earn one point, checked separately
+            if (skillID == "LinkedinCreated")
+            {
+                string SQL = "SELECT LinkedInCreated FROM Students WHERE eNumber = '" + stdntENumber + "'";
+                SqlConnection objConnection = new SqlConnection(strConnection);
+                SqlCommand objCommand = new SqlCommand(SQL);
+                objCommand.Connection = objConnection;
+                objCommand.Connection.Open();
+
+
+                SqlDataReader objReader = objCommand.ExecuteReader();
+                if (objReader.HasRows)
+                {
+                    while (objReader.Read())
+                    {
+                        currLevelString = objReader["LinkedinCreated"].ToString();
+                    }
+                }
+                objReader.Close();
+                objConnection.Close();
+
+                objReader = null;
+                objCommand = null;
+                objConnection = null;
+                if (currLevelString == "False")
+                {
+                    return 0;
+                }
+                else return 1;
+            }
+            else
+            {
+                //other acheivements handeled here
+                string SQL = "SELECT Lvl" + skillID + " FROM Students WHERE eNumber = '" + stdntENumber + "'";
+                SqlConnection objConnection = new SqlConnection(strConnection);
+                SqlCommand objCommand = new SqlCommand(SQL);
+                objCommand.Connection = objConnection;
+                objCommand.Connection.Open();
+
+
+                SqlDataReader objReader = objCommand.ExecuteReader();
+                if (objReader.HasRows)
+                {
+                    while (objReader.Read())
+                    {
+                        currLevelString = objReader["Lvl" + skillID].ToString();
+                    }
+                }
+                objReader.Close();
+                objConnection.Close();
+
+                objReader = null;
+                objCommand = null;
+                objConnection = null;
+
+                currLevel = int.Parse(currLevelString);
+                return currLevel;
+            }
+        }
+
+        //updates skill level depending on points earned 
+        protected bool ChangeSkillLevel(string skillID, string stdntENumber, int newLevel)
+        {
+            try
+            {
+                string strConnection = ConfigurationManager.AppSettings["ConnectionString"];
+                // linkedIn is simply 1 or 0, handled separately 
+                if (skillID == "LinkedinCreated")
+                {
+                    string SQL = "UPDATE Students SET LinkedinCreated = @LinkedinCreated WHERE eNumber = @stdntENumber";
+                    using (SqlConnection connection = new SqlConnection(strConnection))
+                    {
+                        SqlCommand cmdUpdate = new SqlCommand(SQL, connection);
+
+                        if (newLevel != 0)
+                        {
+                            cmdUpdate.Parameters.AddWithValue("@LinkedinCreated", true);
+                        }
+                        else cmdUpdate.Parameters.AddWithValue("@LinkedinCreated", false);
+
+                        cmdUpdate.Parameters.AddWithValue("@stdntENumber", stdntENumber);
+
+                        connection.Open();
+                        cmdUpdate.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    // otherwise new points awarded based on input 
+                    string SQL = "UPDATE Students SET Lvl" + skillID + " = @" + skillID + " WHERE eNumber = @stdntENumber";
+                    using (SqlConnection connection = new SqlConnection(strConnection))
+                    {
+                        SqlCommand cmdUpdate = new SqlCommand(SQL, connection);
+
+                        cmdUpdate.Parameters.AddWithValue("@" + skillID, Convert.ToInt32(newLevel));
+                        cmdUpdate.Parameters.AddWithValue("@stdntENumber", stdntENumber);
+
+                        connection.Open();
+                        cmdUpdate.ExecuteNonQuery();
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
 
         protected string FindAchievementLevel(string eNumber, string achieveName)
@@ -386,7 +670,7 @@ namespace CareerPlanning.GradeLevels
         {
             // this function handles the changing of pages in the achievement view
             (lstAchievements.FindControl("pgrAchievements") as DataPager).SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
-            this.PopulateAchievements((string)Session["username"]);
+            this.PopulateAchievements(getENum());
         }
 
     }

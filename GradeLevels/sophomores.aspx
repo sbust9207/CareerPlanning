@@ -56,16 +56,16 @@
                     <div class="col-12"><h2 align="left">&nbsp;&nbsp;&nbsp;&nbsp;To do:</h2></div>
                 </div>
                 <div class="row">
-                    <div class="col-12" align="left"><asp:CheckBox ID="cbSo1" runat="server" Text="&nbsp;Job Shadowing" OnCheckedChanged="cbSo1_CheckedChanged" /></div>
+                    <div class="col-12" align="left"><asp:CheckBox ID="cbSo1" runat="server" Text="&nbsp;Job Shadowing" AutoPostBack="True" OnCheckedChanged="cbSo1_CheckedChanged" /></div>
                 </div>
                 <div class="row">
-                     <div class="col-12" align="left"><asp:CheckBox ID="cbSo2" runat="server" Text="&nbsp;Develop Elevator Pitch" OnCheckedChanged="cbSo2_CheckedChanged" /></div>
+                     <div class="col-12" align="left"><asp:CheckBox ID="cbSo2" runat="server" Text="&nbsp;Develop Elevator Pitch" AutoPostBack="True" OnCheckedChanged="cbSo2_CheckedChanged" /></div>
                 </div>
                 <div class="row">
-                    <div class="col-12" align="left"><asp:CheckBox ID="cbSo3" runat="server" Text="&nbsp;Develop Brand Statement" OnCheckedChanged="cbSo3_CheckedChanged" /></div>
+                    <div class="col-12" align="left"><asp:CheckBox ID="cbSo3" runat="server" Text="&nbsp;Develop Brand Statement" AutoPostBack="True" OnCheckedChanged="cbSo3_CheckedChanged" /></div>
                 </div>
                 <div class="row">
-                    <div class="col-12" align="left"><asp:CheckBox ID="cbSo4" runat="server" Text="&nbsp;Excel Tips" OnCheckedChanged="cbSo4_CheckedChanged" /></div>
+                    <div class="col-12" align="left"><asp:CheckBox ID="cbSo4" runat="server" Text="&nbsp;Excel Tips" AutoPostBack="True" OnCheckedChanged="cbSo4_CheckedChanged" /></div>
                 </div>
             </div>
         </div>

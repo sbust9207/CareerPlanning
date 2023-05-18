@@ -56,16 +56,16 @@
                     <div class="col-12"><h2 align="left">&nbsp;&nbsp;&nbsp;&nbsp;To do:</h2></div>
                 </div>
                 <div class="row">
-                    <div class="col-12" align="left"><asp:CheckBox ID="cbSn1" runat="server" Text="&nbsp;Attend career fairs" OnCheckedChanged="cbSn1_CheckedChanged" /></div>
+                    <div class="col-12" align="left"><asp:CheckBox ID="cbSn1" runat="server" Text="&nbsp;Attend career fairs" AutoPostBack="True" OnCheckedChanged="cbSn1_CheckedChanged" /></div>
                 </div>
                 <div class="row">
-                     <div class="col-12" align="left"><asp:CheckBox ID="cbSn2" runat="server" Text="&nbsp;Internships related to major" OnCheckedChanged="cbSn2_CheckedChanged" /></div>
+                     <div class="col-12" align="left"><asp:CheckBox ID="cbSn2" runat="server" Text="&nbsp;Internships related to major" AutoPostBack="True" OnCheckedChanged="cbSn2_CheckedChanged" /></div>
                 </div>
                 <div class="row">
-                    <div class="col-12" align="left"><asp:CheckBox ID="cbSn3" runat="server" Text="&nbsp;Data Analytics for Business" OnCheckedChanged="cbSn3_CheckedChanged" /></div>
+                    <div class="col-12" align="left"><asp:CheckBox ID="cbSn3" runat="server" Text="&nbsp;Data Analytics for Business" AutoPostBack="True" OnCheckedChanged="cbSn3_CheckedChanged" /></div>
                 </div>
                 <div class="row">
-                    <div class="col-12" align="left"><asp:CheckBox ID="cbSn4" runat="server" Text="&nbsp;Apply for career positions" OnCheckedChanged="cbSn4_CheckedChanged" /></div>
+                    <div class="col-12" align="left"><asp:CheckBox ID="cbSn4" runat="server" Text="&nbsp;Apply for career positions" AutoPostBack="True" OnCheckedChanged="cbSn4_CheckedChanged" /></div>
                 </div>
             </div>
         </div>

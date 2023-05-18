@@ -5,6 +5,7 @@
 
     <h1 align="center">Freshman Dashboard</h1>
 
+    <!-- this block displays the user's achievements -->
     <div style="text-align: center">
         <asp:ListView ID="lstAchievements" runat="server" OnItemDataBound="lstAchievements_ItemDataBound" OnPagePropertiesChanging="lstAchievements_PagePropertiesChanging">
             <LayoutTemplate>
@@ -36,9 +37,11 @@
             </ItemTemplate>
         </asp:ListView>
     </div>    
+    <!-- end block -->
     
     <br />
 
+    <!-- this block displays the quick links -->
     <div class="container text-center">
         <div class="row">
             <div class="col-md-5">
@@ -70,7 +73,9 @@
             </div>
         </div>
     </div>
+    <!-- end block -->
 
+    <!-- this block allows users to navigate between grade level dashboards -->
     <p align="center">Need to update grade level?
         <asp:DropDownList ID="ddGradeLevel" runat="server" OnSelectedIndexChanged="ddGradeLevel_SelectedIndexChanged" AutoPostBack="True">
                     <asp:ListItem Selected="True"></asp:ListItem>
